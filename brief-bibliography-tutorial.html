@@ -8,7 +8,7 @@
         body{
             margin: 50px;
         }
-        h1 { font-family: Ubuntu; font-size: 36px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h2 { font-family: Ubuntu; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p, label { font-family: Ubuntu; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; margin-left: 24px;} blockquote { font-family: Ubuntu; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Ubuntu; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
+        h1 { font-family: Ubuntu; font-size: 36px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h2 { font-family: Ubuntu; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p, label { font-family: Ubuntu; font-size: 1em; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; margin-left: 24px;} blockquote { font-family: Ubuntu; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Ubuntu; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
         #content1{
             display: block;
         }
@@ -23,6 +23,7 @@
         }
         #part_one{
             display: none;
+            transition: display 3s;
         }
         #part_two{
             display: none;
@@ -39,53 +40,70 @@
         #textbox_research_question{
             display: none;
         }
+        #research_question{
+            width: 75%;
+        }
+        input[type="button"]{
+            color: aliceblue;
+            font-size: 1em;
+            background-color: green;
+            width: 120px;
+            height: 48px;
+        }
+        input[type="button"]:hover{
+            background-color: darkgreen;
+        }
     </style>
 </head>
 <body>
     <h1>bibliography tutorial</h1>
-    <div id="student_name"><p></p></div>
+    <div id="student_name"></div>
+    <div id="todays_date"></div>
     <div id="intro_to_teacher">
     <h2>to the teacher</h2>
-    <p>this is a short tutorial designed to teach a higher education student how to build a brief bibliography with a variety of sources.</p>
+    <p>this is a short tutorial designed to teach how to build a brief bibliography with a variety of sources. it was made with higher education students in mind.</p>
 
-        <p>this tutorial is meant to be both guided and self taught. it can be used in both synchronous and asynchronous environments.</p>
+        <p>this tutorial can be guided or self-taught. it can be used in both synchronous and asynchronous environments.</p>
         
-        <p>it is built entirely on html, javascript and css, works without dependencies or libraries, it can be used both online through this website, hosted in your own environment, which you can totally under the website’s license (mit), it even works offline if saved locally.</p>
+        <p>it is built entirely on html, javascript and css, with minimal dependencies or libraries. the way it's built makes it possible to work in any device with an internet connection and a <strong>modern</strong> browser. it even works offline if hosted locally.</p>
         
-        <p>it is fully accessible by the w3c standard. it is properly and logically marked up. it can be read and made sense of by most screen readers.</p>
+        <p>this tutorial is fully accessible according to the <a href="https://www.w3.org/standards/webdesign/accessibility">w3c accessibility standard</a> . it is properly and logically marked up. it can be read and made sense of by most screen readers.</p>
         
-        <p>this tutorial, except otherwise noted, is licensed under the <a href="https://opensource.org/licenses/mit-license.php" target="new">mit license</a>. this means that, if you find this code useful, you can use it, copy it, share it, change it, name it, make it your own, make fun of it, put your name on it, sell it, mock it, pretty much anything except buy it. </p>
+        <p>except otherwise noted, this tutorial is licensed under the <a href="https://opensource.org/licenses/mit-license.php" target="new">mit license</a>. this means that, if you find this code useful, you can use it, copy it, share it, change it, name it, make it your own, make fun of it, put your name on it, sell it, mock it, pretty much anything except buy it. </p>
         
         <p>if you are buying this, you are getting ripped off. </p>
+
+        <p>you can get this code from my github <a href="https://github.com/serlopez/brief_bibliography_tutorial.git">here</a>.</p>
         
-        <p>if you have any input, please send to thegoat@libraryclassroom.com.
+        <p>if you have any questions, please send to thegoat@libraryclassroom.com.
         </p>
     </div>
     <div id="intro_to_student">
         <h2>to the student</h2>
-        <p>this tutorial will teach you the basics of building a short bibliography. by the end of it, you should end up with a topic, some useful keywords, and an annotated bibliography that you can save as a pdf and send to your teacher for grading. </p> 
-            <p>if you absolutely need to print this tutorial as a worksheet, the blank pdf file will be available at the end of the page.
+        <p>this tutorial will teach you the basics of building a short bibliography. </p> 
+        <p>by the end of it, you should have a topic, some useful keywords, and an annotated bibliography that you can save as a .pdf and send to your teacher for grading.</p> 
+            <p>if you absolutely need to print this tutorial as a worksheet, the blank .pdf file will be available at the end of the page below. click the link <strong>only</strong> if you need a hard copy of this tutorial.
             </p>
-        <p>to begin, please type your name and click the button below:</p>
+        <p>let's get started. please type your name and click the button below:</p>
         <div id="textbox_name">
             <label for="student_name_box">your name: </label>
             <input type="text" id="student_name_box" name="student_name_box" maxlength="50">
-            <input type="button" value="click me" onclick="showStudentName()">
+            <input type="button" value="click me!" onclick="showStudentName()">
         </div>
     </div>
     <div id="part_one">
         <h2>part one: choose a topic</h2>
-        <div id="content1"><p>my goal with this tutorial is to help you build a simple bibliography using resources both from the library and the web, using a step by step process.</p>
+        <div id="content1"><p>my goal with this tutorial is to help you build a simple bibliography, using resources both from the library and the web, using a step-by-step process.</p>
 
-            <p>first step is to pick a general topic you would like to research and turn it into a research question.</p>
+            <p>our first step is to pick a general topic you would like to research and turn it into a research question.</p>
             
-            <p>if i were researching the topic of pollution in general, an example of a research question would be:</p>
+            <p>if you were researching the topic of pollution in general, an example of a research question would be:</p>
             
-            <p>how does pollution affect my community?</p>
+            <p><i>how does pollution affect my community?</i></p>
             
             <p>or</p> 
             
-            <p>how do micro-plastics pollute?</p> 
+            <p><i>how do micro-plastics pollute?</i> </p> 
             <div id="question1"><p>choose a topic and write it in the text box below:</p></div>
             </div>
         
@@ -94,13 +112,13 @@
         <div id="textbox_topic">
             <label for="topic">topic: </label>
             <input type="text" id="topic" name="topic" maxlength="200">
-            <input type="button" value="click me" onclick="showTopic()">
+            <input type="button" value="click me!" onclick="showTopic()">
         </div>      
          <div id="textbox_research_question">
              <p>now write your research question below:</p>
             <label for="research_question">research question: </label>
             <input type="text" id="research_question" name="research_question" maxlength="250">
-            <input type="button" value="click me" onclick="showResearchQuestion()">
+            <input type="button" value="click me!" onclick="showResearchQuestion()">
         </div>
         
     </div>
@@ -112,7 +130,7 @@
             
             <p>we will develop a search strategy by establishing what we know and what we don’t know about the topic, as well as by identifying sources of information.
             </p>
-            <div id="question2"><p>write down in the box below what you know about the topic:</p></div>
+            <div id="question2"><p>write down in the box below what you <strong>know</strong> about the topic:</p></div>
         </div>
         
         <div id="textbox_know">
@@ -120,15 +138,15 @@
             <textarea id="know" name="know" cols="40" rows="5" maxlength="250"></textarea>
         </div> 
         <div id="textbox_not_know">
-            <p>now write what you don't know about the topic:</p>
+            <p>now write what you <strong>don't know</strong> about the topic:</p>
             <label for="not_know">what don't you know?</label>
             <textarea id="not_know" name="not_know" cols="40" rows="5" maxlength="250"></textarea>
         </div>
         <div id="textbox_reliable">
-            <p>lastly, note below if what you know about the topic comes from reliable sources:</p>
+            <p>lastly, note below if what you know about the topic comes from <strong>reliable</strong> sources:</p>
             <label for="reliable">is it reliable? </label>
             <textarea id="reliable" name="reliable" cols="40" rows="5" maxlength="250"></textarea>
-            <input type="button" value="click me" onclick="showText2()">
+            <input type="button" value="click me!" onclick="showText2()">
         </div>     
         <div id="know_field"></div>
         <div id="not_know_field"></div>
@@ -141,15 +159,17 @@
 
             <p>the next step is to find a book in the library catalog.</p>
             
-            <p>because the nature of books and monograms (talking about a single broad subject for a very long time), it is better to start your search broad, no more than one or two keywords per search.</p>
+            <p>because of the nature of books and monograms (usually a general subject discussed in breadth), it is better to start your search broad, no more than one or two keywords per search.</p>
             
-            <p>go to the <a href="https://www.mhcc.edu/library/" target="new">library catalog</a>  and enter your keyword(s) in the field search box.</p>
+            <p>go to the <a href="https://www.mhcc.edu/library/" target="new">library catalog</a> and type your keyword(s) into the search field.</p>
 
             <p>click the search button.</p>
             
             <p>click on one of the entries to look at it more closely.</p>
+
+            <p>the book's description will tell you if it's something you might want to use in your research.</p>
             
-            <p>once you identify the book as a possible source click the citation (double quote) icon. </p> 
+            <p>once you find a book you want to use, click the citation (") icon. </p> 
             </p>
             <div id="question3"><p>copy and paste the citation generated into the box below:</p></div>
         </div>
@@ -162,7 +182,7 @@
             <p>now, write a short paragraph explaining why you think you might want to use this source:</p>
             <label for="annotation">book annotation:</label>
             <textarea id="annotation" name="annotation" cols="80" rows="5" maxlength="500"></textarea>
-            <input type="button" value="click me" onclick="showText3()">
+            <input type="button" value="click me!" onclick="showText3()">
         </div>    
         <div id="citation_field"></div>
         <div id="annotation_field"></div>
@@ -170,9 +190,11 @@
     </div>
     <div id="part_four">
         <h2>part four: find a citation for an article from the library databases</h2>
-        <div id="content4"><p>for this demo, we will use <a href="https://web-a-ebscohost-com.ezp.mhcc.edu/ehost/search/advanced?vid=0&sid=c86614d4-2fbf-4364-88b0-4d0201cc286b%40sdc-v-sessmgr03" target="new">academic search complete</a> , an academic journal database.</p>
+        <div id="content4"><p>for this demo, we will use <a href="https://web-a-ebscohost-com.ezp.mhcc.edu/ehost/search/advanced?vid=0&sid=c86614d4-2fbf-4364-88b0-4d0201cc286b%40sdc-v-sessmgr03" target="new">academic search complete</a> , an academic journal database. make sure you have your portal login and password to access it.</p>
 
-            <p> we are dealing with academic journal articles (very specific topics, usually at a very specific point in time), we can, and generally should, be specific in our searches, adding or omitting keywords as we find information until we find articles as close to what we want as possible.</p>
+            <p>since we are dealing with academic journal articles (very specific topics, usually dealt in more depth than breadth), we can and generally should be specific in our searches, adding or omitting keywords as we find information until we find articles as close to what we want as possible.</p>
+
+            <p>click the link above to go to the database and add your keyword(s) to the search field, make sure to check the <strong>full text</strong> and <strong>peer reviewed</strong> options, and press the search button.</p>
             
             <p>once you get your search results, click on an article’s title link to look at it more closely.</p>
             
@@ -187,22 +209,22 @@
             <p> now write a short paragraph explaining why you want to use this article:</p>
             <label for="annotation_db">article annotation:</label>
             <textarea id="annotation_db" name="annotation_db" cols="80" rows="5" maxlength="500"></textarea>
-            <input type="button" value="click me" onclick="showText4()">
+            <input type="button" value="click me!" onclick="showText4()">
         </div>    
         <div id="citation_db_field"></div>
         <div id="annotation_db_field"></div>
     </div>
     <div id="part_five">
         <h2>part five: find reliable sources on the web</h2>
-        <div id="content5"><p>often times, you will have to venture out of the library into the web to find information on your topic. it may even be your preferred source of information.</p>
+        <div id="content5"><p>often times, you will have to venture out of the library and into the web to find information on your topic. it may even be your preferred source of information.</p>
 
-            <p>the problem is that it is more difficult on the open web to determine if your information comes from reliable sources.</p>
+            <p>the problem is that it becomes more difficult for you to determine if the information you find in a web page from the internet comes from reliable sources.</p>
             
-            <p>to produce a more reliable list of search results, I recommend searching the web by domain, using site: and .com, .org, .edu, .gov, ot .int, as the topic might suggest.</p>
+            <p>to produce a more reliable list of search results, I recommend searching the web <strong>by domain, using site: and .com, .org, .edu, .gov, ot .int</strong>, as the topic might suggest.</p>
             
             <p>look for a website with information related to your topic, searching by domain or using wikipedia.</p>
             
-            <p>once you find it, copy the url and produce a citation using one of several citation generators.</p>
+            <p>once you find it, copy the url and produce a citation using one of several <a href="https://www.citethisforme.com/us/citation-generator">citation generators</a>.</p>
             <div id="question5"><p>once you have your citation, copy and paste it in the box below:</p></div>
             </div>
         
@@ -214,7 +236,8 @@
             <p>now write a brief paragraph explaining why you want to us this website for your research below:</p>
             <label for="annotation_web">website annotation:</label>
             <textarea id="annotation_web" name="annotation_web" cols="80" rows="5" maxlength="500"></textarea>
-            <input type="button" value="click me" onclick="showText5()">
+            <input type="button" value="click me!" onclick="showText5()">
+            <p>this button will end the tutorial. <strong>thank you!</strong> save this as a pdf using the instructions below.</p>
         </div>    
         <div id="citation_web_field"></div>
         <div id="annotation_web_field"></div>
@@ -225,13 +248,17 @@
             <p>in firefox: install add-ons first, then click file/print to pdf.</p>
         </div>
     </div>
-    <h2>blank pdf file</h2>
-    <div id="pdf_file"><p><a href="brief bibliography tutorial.pdf" target="new">pdf file here</a> </p></div>
-    <div id="footer"></div>
+    
+    <div id="footer">
+        <h2>blank .pdf file</h2>
+    <div id="pdf_file"><p><a href="brief bibliography tutorial.pdf" target="new">.pdf file here</a> </p></div>
+    </div>
     <script>
         function showStudentName(){
             const name = document.getElementById('student_name_box').value;
             document.getElementById('student_name').innerHTML = name;
+            const todaysDate = new Date();
+            document.getElementById('todays_date').innerHTML = todaysDate;
             var introToTeacher = document.getElementById('intro_to_teacher');
             introToTeacher.style.display = 'none';
             var introToStudent = document.getElementById('intro_to_student');
