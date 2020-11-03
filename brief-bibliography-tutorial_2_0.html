@@ -1,0 +1,362 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brief bibliography tutorial</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+    <style>
+        body{
+            padding: 50px;
+        }
+
+        h1 { font-family: Ubuntu; font-size: 2em; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
+        h2 { font-family: Ubuntu; font-size: 1.5em; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+        p, label, input, li { font-family: Ubuntu; font-size: 1em; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; margin-left: 24px;} 
+        blockquote { font-family: Ubuntu; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+        pre { font-family: Ubuntu; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
+
+        .hide{
+            transition: opacity 500ms ease-in;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .show{
+            transition: opacity 500ms ease-in;
+            opacity: 1;
+            height: auto;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        label{
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type=text], textarea, select{
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }    
+
+        input[type=button]{
+            padding: 10px 20px;
+            margin: 8px 0;
+            color: white;
+            background-color: green;
+            border-radius: 4px;
+        }
+
+        input[type=button]:hover{
+            background-color: darkgreen;
+        }    
+    </style>
+</head>
+<body>
+    <div id="part0" class="show">
+    <h1>bibliography tutorial</h1>
+    <div id="intro_teacher">
+        <h2>to the teacher:</h2>
+        <p>this is a short tutorial on how to build a brief bibliography. its initial audience is the community college student. however, it can be adapted to other student's needs.</p>
+        <p>this tutorial was built to be as accessible as possible. it can be used in a number of activities both in the synchronous and asynchronous classroom.
+        it is built entirely on html, javascript and css, with minimal dependencies or libraries. the way it's built makes it possible to work in any device with an internet connection and a <strong>modern</strong> browser. it even works offline if hosted locally.</p>
+        <p>this tutorial is fully accessible according to the <a href="https://www.w3.org/standards/webdesign/accessibility">w3c accessibility standard</a> . it is properly and logically marked up. it can be read and made sense of by most screen readers.</p>
+        <p>except otherwise noted, this tutorial is licensed under the <a href="https://opensource.org/licenses/mit-license.php" target="new">mit license</a>. this means that, if you find this code useful, you can use it, copy it, share it, change it, name it, make it your own, make fun of it, put your name on it, sell it, mock it, pretty much anything except buy it. </p>
+        <p>if you are buying this, you are getting ripped off. </p>
+        <p>you can get this code from my github <a href="https://github.com/serlopez/brief_bibliography_tutorial.git">here</a>.</p>
+        <p>if you have any questions, please send to thegoat@libraryclassroom.com.
+        </p>
+    </div>
+    <div id="intro_student">
+        <h2>to the student:</h2>
+        <p>this tutorial will teach you the basics of building a short bibliography. </p> 
+        <p>by the end of it, you should have a topic, some useful keywords, and an annotated bibliography that you can save as a .pdf and send to your teacher for grading.</p> 
+        <p>if you absolutely need to print this tutorial as a worksheet, the blank .pdf file will be available at the end of the page below. click the link <strong>only</strong> if you need a hard copy of this tutorial.
+        </p>
+        <p>let's get started. please type your name and click the button below:</p>
+    </div>
+    
+    <div id="name_input">
+        <label for="name_box">please write your name:</label>
+        <input type="text" name="name_box" id="name_box" maxlength="75">
+        <input type="button" value="click me!" onclick="displayName()">
+        
+    </div>
+    <div id=output_name></div>
+    </div>
+    <div id="part1" class="hide">
+        <h2>part one: choose a topic and compose a research question</h2>
+        <p>my goal with this tutorial is to help you build a simple bibliography, using resources both from the library and the web, using a step-by-step process.</p>
+
+            <p>our first step is to pick a general topic you would like to research and turn it into a research question.</p>
+            
+            <p>if you were researching the topic of pollution in general, an example of a research question would be:</p>
+            
+            <p><i>how does pollution affect my community?</i></p>
+            
+            <p>or</p> 
+            
+            <p><i>how do micro-plastics pollute, exactly?</i> </p>
+    
+        <div id="question1">
+            <p><strong>write down your topic and your research question.</strong></p>
+        </div>
+        <div id="input1">
+            <label for="input_topic">topic:</label>
+            <input type="text" name="input_topic" id="input_topic" maxlength="140" placeholder="write your topic here">
+            <label for="input_rquestion">research question:</label>
+            <input type="text" name="input_rquestion" id="input_rquestion" size="70" maxlength="280" placeholder="write your research question here">
+            <input type="button" value="click me!" onclick="answer1()">
+        </div>
+    </div>
+    <div id="output1">
+        <div id="output_question1"></div>
+        <div id="output_topic"></div>
+        <div id="output_rquestion"></div>
+    </div>
+    <div id="part2" class="hide">
+        <h2>part two: find keywords and develop a search strategy</h2>
+        <p>now that we have a topic and a research question, we can come up with a search strategy.</p>
+
+            <p>there are many methods to do this, and many people don’t use a method at all.</p>
+            
+            <p>we will develop a search strategy by establishing:</p>
+            <ul>
+                <li>what we <strong>know</strong> about the topic</li>
+                <li>what we <strong>don't know</strong> about the topic</li>
+                <li>how <strong>reliable</strong> is the information we have, where we got it, and where we can get more.</li>
+            </ul>
+
+    
+        <div id="question2">
+            <p><strong>note down what you know about the topic, what you don't know, and how reliable is what you currently know.</strong></p>
+
+        </div>
+        <div id="input2">
+            <div><label for="input_know">what do you know?</label>
+            <textarea name="input_know" id="input_know" cols="48" rows="6" maxlength="480" placeholder="what do you know?"></textarea></div>
+            <div><label for="input_notknow">what <strong>don't</strong> you know?</label>
+            <textarea name="input_notknow" id="input_notknow" cols="48" rows="6" maxlength="480" placeholder="what don't you know?"></textarea></div>
+            <div><label for="input_reliable">how reliable is what you know?</label>
+            <textarea name="input_reliable" id="input_reliable" cols='48' rows="6" maxlength="480" placeholder="is it reliable?"></textarea></div>
+            <input type="button" value="click me!" onclick="answer2()">
+        </div>
+        
+    </div>
+    <div id="output2">
+        <div id="output_question2"></div>
+        <div id="output_know"></div>
+        <div id="output_notknow"></div>
+        <div id="output_reliable"></div>
+    </div>
+        <div id="part3" class="hide">
+            <h2>part three: find a book citation using the library catalog</h2>
+            <p>after all this, you should have a research question, some useful keywords, and possible sources of information to begin your search.</p>
+
+            <p>the next step is to find a book in the library catalog.</p>
+            
+            <p>because of the nature of books and monograms (usually a general subject discussed in breadth), it is better to start your search broad, no more than one or two keywords per search.</p>
+            
+            <p>go to the <a href="https://www.mhcc.edu/library/" target="new">library catalog</a> and type your keyword(s) into the search field.</p>
+
+            <p>click the search button.</p>
+            
+            <p>click on one of the entries to look at it more closely.</p>
+
+            <p>the book's description will tell you if it's something you might want to use in your research.</p>
+            
+            <p>once you find a book you want to use, click the citation (") icon. choose the appropriate style.</p> 
+            <p>copy the citation and paste it in the book citation box below. then write a short paragraph explaining why you chose this book to include in your research.</p>
+
+        <div id="question3">
+            <p><strong>add your book's citation and annotation.</strong></p>
+        </div>
+        <div id="input3">
+            <div><label for="input_citation_book">book citation:</label>
+            <textarea name="input_citation_book" id="input_citation_book" cols="72" rows="6" maxlength="480" placeholder="copy and paste your citation here:"></textarea></div>
+            <div><label for="input_annotation_book">book annotation:</label>
+            <textarea name="input_annotation_book" id="input_annotation_book" cols="72" rows="6" maxlength="480" placeholder="write your annotation here:"></textarea></div>
+            <input type="button" value="click me!" onclick="answer3()">
+        </div>
+        
+    </div>
+    <div id="output3">
+        <div id="output_question3"></div>
+        <div id="output_book_citation"></div>
+        <div id="output_book_annotation"></div>
+    </div>
+    <div id="part4" class="hide">
+        <h2>part four: find a citation for an article from the library databases</h2>
+        <p>for this part, we will use the library databases. make sure you have your student login and password to access the library resources.</p>
+
+            <p>since we are dealing with academic journal articles (very specific topics, usually dealt in more depth than breadth), we can and generally should be specific in our searches, adding or omitting keywords as we find information until we find articles as close to what we want as possible.</p>
+
+            <p>below you will find a <strong>subject list</strong>  dropdown menu. select the subject based on your class, click the button to go to the list of library databases chosen for your class.</p>
+            <p>pick a database by clicking the link. once in the database, pick an article, produce a citation for it with the tools provided, copy and paste the citation in the article citation box below.<i>if you need assistance navigating the databases, ask a librarian for help</i> .</p>
+            <p>write a short paragraph explaining why you chose the article in the article annotation box.</p>
+        <label for="subject_list">subject list:</label>
+        <select name="subject_list" id="subject_list">
+            <option value="c.php?g=850696&p=6086772">writing</option>
+            <option value="c.php?g=850738&p=6087119">history</option>
+            <option value="c.php?g=850699&p=6086796">reading</option>
+            <option value="c.php?g=850703&p=6086842">english literature</option>
+            <option value="c.php?g=851174&p=6090887">abe/ged/esl</option>
+            <option value="c.php?g=879426&p=6316982">human development</option>
+            <input type="button" value="click me!" onclick="showSubjectDbs()">
+        </select>
+        <div id="question4">
+            <p><strong>add your journal article's citation and annotation.</strong></p>
+        </div>
+        <div id="input4">
+            <div><label for="input_citation_article">article citation:</label>
+            <textarea name="input_citation_article" id="input_citation_article" cols="72" rows="6" maxlength="480" placeholder="copy and paste your citation here:"></textarea></div>
+            <div><label for="input_annotation_article">article annotation:</label>
+            <textarea name="input_annotation_article" id="input_annotation_article" cols="72" rows="6" maxlength="480" placeholder="write your annotation here:"></textarea></div>
+            <input type="button" value="click me!" onclick="answer4()">
+        </div>
+        
+    </div>
+    <div id="output4">
+        <div id="output_question4"></div>
+        <div id="output_article_citation"></div>
+        <div id="output_article_annotation"></div>
+    </div>
+    <div id="part5" class="hide">
+        <h2>part five: find reliable sources on the web</h2>
+        <p>often times, you will have to venture out of the library and into the web to find information on your topic. it may even be your preferred source of information.</p>
+
+            <p>the problem is that it becomes more difficult for you to determine if the information you find in a web page from the internet comes from reliable sources.</p>
+            
+            <p>to produce a more reliable list of search results, I recommend searching the web <strong>by domain, using site: and .com, .org, .edu, .gov, ot .int</strong>, as the topic might suggest.</p>
+            
+            <p>look for a website with information related to your topic, searching by domain or using wikipedia.</p>
+            
+            <p>once you find it, copy the url and produce a citation using one of several <a href="https://www.citethisforme.com/us/citation-generator">citation generators</a>.</p>
+
+            <p>lastly, write a short paragraph explaining why you chose this website for your research.</p>
+        <div id="question5">
+            <p><strong>add your website's citation and annotation.</strong></p>
+        </div>
+        <div id="input5">
+            <div><label for="input_citation_web">website citation:</label>
+            <textarea name="input_citation_web" id="input_citation_web" cols="72" rows="6" maxlength="480" placeholder="copy and paste your citation here:"></textarea></div>
+            <div><label for="input_annotation_web">website annotation:</label>
+            <textarea name="input_annotation_web" id="input_annotation_web" cols="72" rows="6" maxlength="480" placeholder="write your annotation here:"></textarea></div>
+            <input type="button" value="click me!" onclick="answer5()">
+        </div>
+        
+    </div>
+    <div id="output5">
+        <div id="output_question5"></div>
+        <div id="output_web_citation"></div>
+        <div id="output_web_annotation"></div>
+    </div>
+    <div id="end_instructions" class="hide">
+        <h2>how to pdf this</h2>
+            <p>in chrome: chrome://print or settings/print. select destination print to .pdf.</p>
+            <p>in safari: command+P/click PDF button/save as .pdf.</p>
+            <p>in firefox: install add-ons first, then click file/print to .pdf.</p>
+            <h2>blank .pdf file</h2>
+            <div id="pdf_file"><p><a href="brief bibliography tutorial.pdf" target="new">.pdf file here</a> </p></div>
+    </div>
+    <script>
+        const part1 = document.getElementById('part1');
+        const part2 = document.getElementById('part2');
+        const part3 = document.getElementById('part3');
+        const part4 = document.getElementById('part4');
+        const part5 = document.getElementById('part5');
+        const endInstructions = document.getElementById('end_instructions');
+        function displayName(){
+            console.log("hello world");
+            const name = document.getElementById("name_box").value;
+            document.getElementById("output_name").innerHTML = '<p>'+name+'</p>';
+            const introToTeacher = document.getElementById('intro_teacher');
+            introToTeacher.classList.add('hide');
+            const introToStudent = document.getElementById('intro_student');
+            introToStudent.classList.add('hide');
+            const hideInput = document.getElementById('name_input');
+            hideInput.classList.add('hide');
+            part1.classList.remove('hide');
+            part1.classList.add('show');
+        }
+
+        function answer1(){
+            const outputQ1 = document.getElementById('question1').innerHTML;
+            document.getElementById('output_question1').innerHTML = outputQ1;
+            const topic = document.getElementById('input_topic').value;
+            const rQuestion = document.getElementById('input_rquestion').value;
+            document.getElementById('output_topic').innerHTML = "<p>"+topic+"</p>";
+            document.getElementById('output_rquestion').innerHTML = "<p>"+rQuestion+"</p>";
+            part1.classList.remove('show');
+            part1.classList.add('hide');
+            part2.classList.remove('hide');
+            part2.classList.add('show');
+        }
+
+        function answer2(){
+            const outputQ2 = document.getElementById('question2').innerHTML;
+            document.getElementById('output_question2').innerHTML = outputQ2;
+            const know = document.getElementById('input_know').value;
+            const notKnow = document.getElementById('input_notknow').value;
+            const reliable = document.getElementById('input_reliable').value;
+            document.getElementById('output_know').innerHTML = "<p>"+know+"</p>";
+            document.getElementById('output_notknow').innerHTML = "<p>"+notKnow+"</p>";
+            document.getElementById('output_reliable').innerHTML = "<p>"+reliable+"</p>";
+            part2.classList.remove('show');
+            part2.classList.add('hide');
+            part3.classList.remove('hide');
+            part3.classList.add('show');
+        }
+
+        function answer3(){
+            const outputQ3 = document.getElementById('question3').innerHTML;
+            document.getElementById('output_question3').innerHTML = outputQ3;
+            const citBook = document.getElementById('input_citation_book').value;
+            const annoBook = document.getElementById('input_annotation_book').value;
+            document.getElementById('output_book_citation').innerHTML = "<p>"+citBook+"</p>";
+            document.getElementById('output_book_annotation').innerHTML = "<p>"+annoBook+"</p>";
+            part3.classList.remove('show');
+            part3.classList.add('hide');
+            part4.classList.remove('hide');
+            part4.classList.add('show');
+
+        }
+
+        function answer4(){
+            const outputQ4 = document.getElementById('question4').innerHTML;
+            document.getElementById('output_question4').innerHTML = outputQ4;
+            const citArticle = document.getElementById('input_citation_article').value;
+            const annoArticle = document.getElementById('input_annotation_article').value;
+            document.getElementById('output_article_citation').innerHTML = "<p>"+citArticle+"</p>";
+            document.getElementById('output_article_annotation').innerHTML = "<p>"+annoArticle+"</p>";
+            part4.classList.remove('show');
+            part4.classList.add('hide');
+            part5.classList.remove('hide');
+            part5.classList.add('show');
+        }
+
+        function answer5(){
+            const outputQ5 = document.getElementById('question5').innerHTML;
+            document.getElementById('output_question5').innerHTML = outputQ5;
+            const citWeb = document.getElementById('input_citation_web').value;
+            const annoWeb = document.getElementById('input_annotation_web').value;
+            document.getElementById('output_web_citation').innerHTML = "<p>"+citWeb+"</p>";
+            document.getElementById('output_web_annotation').innerHTML = "<p>"+annoWeb+"</p>";
+            part5.classList.remove('show');
+            part5.classList.add('hide');
+            endInstructions.classList.remove('hide');
+            endInstructions.classList.add('show');
+        }
+
+        function showSubjectDbs(){
+            console.log("hello world");
+            const subject = document.getElementById("subject_list").value;
+            window.open("https://libguides.mhcc.edu/"+subject, "_blank");
+        }
+    </script>
+</body>
+</html>
